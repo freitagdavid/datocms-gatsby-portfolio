@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# get the current path
+CURPATH=`pwd`
+
+inotifywait -mr --timefmt '%d/%m/%y %H:%M' --format '%T %w %f' \
+-e close_write ./ | while read date time dir file; do
+	pnpm run develop
+done

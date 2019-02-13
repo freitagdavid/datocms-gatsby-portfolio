@@ -1,7 +1,7 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
-import Img from 'gatsby-image'
+import React from 'react';
+import { graphql } from 'gatsby';
+import { HelmetDatoCms } from 'gatsby-source-datocms';
+import Img from 'gatsby-image';
 
 const About = ({ data: { about } }) => (
   <article className="sheet">
@@ -20,9 +20,9 @@ const About = ({ data: { about } }) => (
       />
     </div>
   </article>
-)
+);
 
-export default About
+export default About;
 
 export const query = graphql`
   query AboutQuery {
@@ -44,4 +44,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
