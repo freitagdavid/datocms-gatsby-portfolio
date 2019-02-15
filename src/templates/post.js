@@ -11,7 +11,7 @@ export default ({ data }) => (
         <div className="sheet__title">{data.datoCmsPost.title}</div>
         <div className="sheet__post-date">{data.datoCmsPost.post_date}</div>
         <div className="sheet__post-content">
-          {data.datoCmsPost.post_content}
+          {data.datoCmsPost.postContent}
         </div>
       </div>
     </article>
