@@ -1,54 +1,72 @@
-import React from 'react';
-import { Link, graphql } from 'gatsby';
-import Layout from '../components/layout';
-import styled from 'styled-components';
-import theme from '../themes/material-ocean-hc';
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import Layout from '../components/layout'
+import styled from 'styled-components'
+import theme from '../themes/material-ocean-hc'
+import Truncate from 'react-truncate'
+import normalize from 'normalize-text'
 
-const linkTextColor = 'black';
+const linkTextColor = 'black'
 
 const PostList = styled.li`
-  list-style: none;
-  width: 70%;
-  padding-top: 2em;
-`;
+    list-style: none;
+    width: 72%;
+    padding-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+`
 const PostItem = styled.div`
-  border: solid black 1px;
-  border-radius: 6px;
-  padding: 5px 0 5px 15px;
-  height: 100px;
-`;
-const Card = styled.figure``;
+    border: solid black 1px;
+    border-radius: 6px;
+    padding: 5px 0 5px 0px;
+`
+const Card = styled.figure``
 const CardCaption = styled.figcaption`
-  border-bottom: solid black 2px;
-  width: 50%;
-  a {
-    text-decoration: none;
-    color: ${theme.linkTextColor};
-  }
-`;
-const CardHeader = styled.h6``;
-const CardBody = styled.div``;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: solid black 2px;
+    width: 100%;
+    a {
+        text-decoration: none;
+        color: ${theme.linkTextColor};
+    }
+`
+const CardHeader = styled.h6`
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+`
+const CardBody = styled.div`padding: 0 15px;`
 
 const IndexPage = ({ data }) => (
-  <Layout>
-    <PostList>
-      {data.allDatoCmsPost.edges.map(({ node: post }) => (
-        <PostItem key={post.id}>
-          <Card>
-            <CardCaption>
-              <CardHeader>
-                <Link to={`/post/${post.slug}`}>{post.title}</Link>
-              </CardHeader>
-            </CardCaption>
-            <CardBody>
-              <p>{post.summary}</p>
-            </CardBody>
-          </Card>
-        </PostItem>
-      ))}
-    </PostList>
-  </Layout>
-);
+    <Layout>
+        <PostList>
+            {data.allDatoCmsPost.edges.map(({ node: post }) => (
+                <PostItem key={post.id}>
+                    <Card>
+                        <CardCaption>
+                            <CardHeader>
+                                <Link to={`/post/${post.slug}`}>{post.title}</Link>
+                                <date>{post.postDate}</date>
+                            </CardHeader>
+                        </CardCaption>
+                        <CardBody>
+                            <Truncate
+                                lines={3}
+                                ellipsis={
+                                    <span>
+                                        ...<Link to={`/post/${post.slug}`}>Read More</Link>
+                                    </span>
+                                }>
+                                {post.postContent}
+                            </Truncate>
+                        </CardBody>
+                    </Card>
+                </PostItem>
+            ))}
+        </PostList>
+    </Layout>
+)
 
 // const IndexPage = ({ data }) => (
 //   <Layout>
@@ -74,18 +92,20 @@ const IndexPage = ({ data }) => (
 //   </Layout>
 // )
 
-export default IndexPage;
+export default IndexPage
 
 export const query = graphql`
-  query IndexQuery {
-    allDatoCmsPost {
-      edges {
-        node {
-          id
-          title
-          slug
+    query IndexQuery {
+        allDatoCmsPost {
+            edges {
+                node {
+                    id
+                    title
+                    slug
+                    postContent
+                    postDate
+                }
+            }
         }
-      }
     }
-  }
-`;
+`
