@@ -76,12 +76,16 @@ function Article({
   summaryLimit = 60,
   slug
 }) {
+  postDate = postDate.split("-");
+  postDate = [postDate[1], postDate[2], postDate[0]];
+  postDate = postDate.join("-");
   body = helpers.truncate(body, summaryLimit);
+  console.log(postDate);
   return (
     <article className={className}>
       <ArticleHeader>
         <h3>{title}</h3>
-        <time>{postDate}</time>
+        <time datetime={postDate}>{postDate}</time>
       </ArticleHeader>
       <summary>{body}</summary>
       <Link to={`/post/${slug}`}>{urlText}</Link>
