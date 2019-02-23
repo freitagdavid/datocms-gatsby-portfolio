@@ -35,17 +35,17 @@ const StyledArticle = styled(Article)`
     color: ${darkTheme.textColor};
   }
   a {
-      font-size: 1.5rem;
-      text-decoration: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      color: ${darkTheme.textColor}
-      background: ${darkTheme.primaryBright}
-      height: 40px;
-      border-radius: 0 0 10px 10px;
-    }
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: ${darkTheme.textColor};
+    background: ${darkTheme.primaryBright};
+    height: 40px;
+    border-radius: 0 0 10px 10px;
+  }
 `;
 
 const ArticleHeader = styled.div`
