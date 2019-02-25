@@ -14,6 +14,7 @@ const darkTheme = {
 };
 
 const StyledArticle = styled(Article)`
+  margin-bottom: 30px;
   box-sizing: border-box;
   @import url(${darkTheme.fontUrl});
   display: flex;
