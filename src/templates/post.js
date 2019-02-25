@@ -11,10 +11,7 @@ export default ({ data }) => (
         <div className="sheet__title">{data.datoCmsPost.title}</div>
         <div className="sheet__post-date">{data.datoCmsPost.post_date}</div>
         <div className="sheet__post-content">
-          {data.datoCmsPost.postContent} dangerouslySetInnerHTML=
-          {{
-            __html: data.datoCmsPost.descriptionNode.childMarkdownRemark.html
-          }}
+          {data.datoCmsPost.postContent}
         </div>
       </div>
     </article>
